@@ -2,6 +2,10 @@ package mapreduce
 
 import (
 	"hash/fnv"
+	"io/ioutil"
+	"log"
+	"os"
+	"encoding/json"
 )
 
 // doMap does the job of a map worker: it reads one of the input files
@@ -14,6 +18,7 @@ func doMap(
 	nReduce int, // the number of reduce task that will be run ("R" in the paper)
 	mapF func(file string, contents string) []KeyValue,
 ) {
+
 	// TODO:
 	// You will need to write this function.
 	// You can find the filename for this map task's input to reduce task number
@@ -40,6 +45,42 @@ func doMap(
 	//     err := enc.Encode(&kv)
 	//
 	// Remember to close the file after you have written all the values!
+
+	bytes, err := ioutil.ReadFile(inFile)
+	if err != nil {
+		log.Fatal("doMap: read flie error", err)
+	}
+
+	mapKV := mapF(inFile, string(bytes))
+
+	//mapKVGroup := make(map[uint32][]KeyValue)
+	mapKVGroup := make([][]KeyValue, nReduce)
+
+	for _, kv := range mapKV {
+		groupId := ihash(kv.Key) % uint32(nReduce)
+		mapKVGroup[groupId] = append(mapKVGroup[groupId], kv)
+	}		
+
+	for r:=0; r<nReduce; r++ {
+		outputFileName := reduceName(jobName, mapTaskNumber, r)
+
+		outputFile, err := os.Create(outputFileName)
+		if err != nil {
+			log.Fatal("doMap: create output file error", err)
+		}
+
+		defer outputFile.Close()
+		
+		enc := json.NewEncoder(outputFile)
+		for _, kv := range mapKVGroup[uint32(r)] {
+			err := enc.Encode(&kv)
+			if err != nil {
+				log.Fatal("doMap: encode key-value error", err)
+			}
+		}
+	}
+
+
 }
 
 func ihash(s string) uint32 {
