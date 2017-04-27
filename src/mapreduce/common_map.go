@@ -69,8 +69,6 @@ func doMap(
 			log.Fatal("doMap: create output file error", err)
 		}
 
-		defer outputFile.Close()
-		
 		enc := json.NewEncoder(outputFile)
 		for _, kv := range mapKVGroup[uint32(r)] {
 			err := enc.Encode(&kv)
@@ -78,6 +76,8 @@ func doMap(
 				log.Fatal("doMap: encode key-value error", err)
 			}
 		}
+
+		outputFile.Close()
 	}
 
 

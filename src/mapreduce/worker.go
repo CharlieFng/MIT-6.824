@@ -24,8 +24,8 @@ type Worker struct {
 // DoTask is called by the master when a new task is being scheduled on this
 // worker.
 func (wk *Worker) DoTask(arg *DoTaskArgs, _ *struct{}) error {
-	fmt.Printf("%s: given %v task #%d on file %s (nios: %d)\n",
-		wk.name, arg.Phase, arg.TaskNumber, arg.File, arg.NumOtherPhase)
+	//fmt.Printf("%s: given %v task #%d on file %s (nios: %d)\n",
+		//wk.name, arg.Phase, arg.TaskNumber, arg.File, arg.NumOtherPhase)
 
 	switch arg.Phase {
 	case mapPhase:
@@ -34,7 +34,7 @@ func (wk *Worker) DoTask(arg *DoTaskArgs, _ *struct{}) error {
 		doReduce(arg.JobName, arg.TaskNumber, arg.NumOtherPhase, wk.Reduce)
 	}
 
-	fmt.Printf("%s: %v task #%d done\n", wk.name, arg.Phase, arg.TaskNumber)
+	//fmt.Printf("%s: %v task #%d done\n", wk.name, arg.Phase, arg.TaskNumber)
 	return nil
 }
 
