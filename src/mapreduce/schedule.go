@@ -46,8 +46,33 @@ func (mr *Master) schedule(phase jobPhase) {
 			if ok {
 				mr.registerChannel <- worker
 				fmt.Printf("Worker %s finish %d task in %v phase\n", worker, taskNum, phase)
+			}else{
+				fmt.Println("Catch worker failure")
+				fmt.Println("Current workers in Master", mr.workers)
+				for i, w := range mr.workers {
+					if w == worker {
+						mr.workers = append(mr.workers[:i], mr.workers[i+1:]...)
+						break
+					}
+				}
+				fmt.Println("After,  workers in Master", mr.workers)
+				var w string
+				if len(mr.workers) > 0 {
+					fmt.Printf("Master current workers number %d\n", len(mr.workers))
+					w = mr.workers[0]
+
+				}else{
+					fmt.Printf("No workers right now, has to wait", len(mr.workers))
+					w = <-mr.registerChannel
+				}
+				ok := call(w, "Worker.DoTask", &taskArgs, new(struct{}))
+				if ok {
+					fmt.Printf("Worker %s finish %d task in %v phase\n", w, taskNum, phase)
+					mr.registerChannel <- w
+				}
 			}
 		}(worker,taskNum, phase)
+
 	}
 
 
