@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4262d486-793f-4cd8-aff2-a9567bfc268f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/hello.go" afterPath="$PROJECT_DIR$/src/Test/hello.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mapreduce/schedule.go" afterPath="$PROJECT_DIR$/src/mapreduce/schedule.go" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -57,8 +55,8 @@
       <file leaf-file-name="schedule.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mapreduce/schedule.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-193">
-              <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+            <state relative-caret-position="347">
+              <caret line="73" column="16" lean-forward="false" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
               <folding>
                 <element signature="e#19#45#0" expanded="true" />
               </folding>
@@ -142,7 +140,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
+    <option name="x" value="-37" />
     <option name="y" value="23" />
     <option name="width" value="1380" />
     <option name="height" value="764" />
@@ -762,7 +760,7 @@
       <workItem from="1493185698423" duration="17097000" />
       <workItem from="1493254649011" duration="15007000" />
       <workItem from="1493275774172" duration="7119000" />
-      <workItem from="1493339076262" duration="1966000" />
+      <workItem from="1493339076262" duration="2965000" />
     </task>
     <servers />
   </component>
@@ -787,10 +785,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51398000" />
+    <option name="totallyTimeSpent" value="52397000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="23" width="1380" height="764" extended-state="0" />
+    <frame x="-37" y="23" width="1380" height="764" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1226,8 +1224,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mapreduce/schedule.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-193">
-          <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+        <state relative-caret-position="347">
+          <caret line="73" column="16" lean-forward="false" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="16" />
           <folding>
             <element signature="e#19#45#0" expanded="true" />
           </folding>
